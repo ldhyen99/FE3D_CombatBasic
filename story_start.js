@@ -26,14 +26,16 @@ function focusGoalBad() {
 // function receive start & end ligntning; return bad of good case
 function resultLighting(lightningStart, lightningEnd, options, type) {
   btnLetPlay.disabled = true;
+  setTimeout(() => {
+    btnLetPlay.disabled = false;
+  }, options.duration);
+
   if (type === 'goodGoal') {
     lightning.animate([lightningStart, lightningEnd], options).onfinish =
       hitTheVillain;
   }
+
   lightning.animate([lightningStart, lightningEnd], options);
-  setTimeout(() => {
-    btnLetPlay.disabled = false;
-  }, options.duration);
 }
 
 // animation if we hit the villain
@@ -53,10 +55,11 @@ function hitTheVillain() {
 // action of Villain character
 function actionOfVillain(villainStart, villainEnd, options) {
   btnLetPlay.disabled = true;
-  villain.animate([villainStart, villainEnd], options);
   setTimeout(() => {
     btnLetPlay.disabled = false;
   }, options.duration);
+
+  villain.animate([villainStart, villainEnd], options);
 }
 
 // random good or bad lightning by onclick
