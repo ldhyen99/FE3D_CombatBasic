@@ -1,6 +1,7 @@
 let hero = document.querySelector('#hero');
 let villain = document.querySelector('#villain');
 let lightning = document.querySelector('#lightning');
+let btnLetPlay = document.querySelector('#button_play');
 let options = { duration: 1000 }; // how long action should play for in this case; ms
 
 // focus goal good
@@ -34,5 +35,9 @@ function randomTypelightning() {
 
 // function receive start & end ligntning; return bad of good case
 function resultLighting(lightningStart, lightningEnd) {
+  btnLetPlay.disabled = true;
   lightning.animate([lightningStart, lightningEnd], options);
+  setTimeout(() => {
+    btnLetPlay.disabled = false;
+  }, options.duration);
 }
